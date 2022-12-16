@@ -1,0 +1,270 @@
+@font-face {
+    font-family: 'NunitoSans';
+    src: url(fonts/NunitoSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'NunitoBold';
+    src: url(fonts/NunitoSans-Bold.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'NunitoSans';
+}
+body{
+    background: linear-gradient(to bottom right,#fbdb89,#f48982);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.myContainer{
+    width: 80%;
+    margin: 4% auto;
+    background-color: #f9f5f3;
+    border-radius: 10px;
+    box-shadow: 0 30px 90px 8px #574e4c33;
+
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px;
+    position: relative;
+
+}
+.logo{
+    width: 140px;
+}
+.logo img{
+    width: 100%;
+}
+ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+}
+.bookmark_container{
+    width: 350px;
+    height: 150px;
+    padding: 25px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #615551;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    visibility: hidden;
+    transform: .5s;
+
+}
+.bookmark:hover + .bookmark_container {
+    visibility: visible;
+}
+.bookmark_container i{
+    color: #f48982;
+    font-size: 25px;
+    margin-right: 5px;
+
+}
+.bookmark_container p{
+    color: #615551;
+    font-size: 18px;
+    font-weight: 500;
+}
+nav li{
+    list-style: none;
+}
+
+nav a{
+    text-decoration: none;
+    color: #615551;
+    font-weight: 600;
+    padding: 41px 15px;
+}
+nav a:hover{
+    background-color: #efefef;
+    color: #615551;
+    
+}
+nav a i{
+    color: #f48982;
+    font-size: 20px;
+    margin-right: 5px;
+}
+nav form{
+    position: relative;
+}
+#FormSearch input{
+    border: none;
+    padding: 0 20px;
+    height: 55px;
+    border-radius: 50px;
+    width: 350px;
+    font-size: 17px;
+    outline: none;
+    transition: all .3s;
+}
+nav input:focus{
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    transform: translate(0,-2px);
+}
+nav input:focus +button{
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    transform: translate(0,-2px);
+
+}
+#FormSearch button{
+    position: absolute;
+    right: -130px;
+    top: 0;
+    bottom: 0;
+}
+button{
+    background: linear-gradient(to bottom right,#fbdb89,#f48982);
+    border: none;
+    padding: 0 40px;
+    outline: none;
+    height: 55px;
+    border-radius: 50px !important;
+    color: white;
+    font-size: 17px; 
+    font-weight: 500;
+    transition: .3s;
+    cursor: pointer;
+}
+nav button:hover{
+    transform: scale(1.05);
+}
+nav button i{
+    margin-right: 5px;
+    font-size: 18px;
+}
+.addRecipe{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    position: relative;
+}
+.addRecipe h2{
+    margin-bottom: 40px;
+}
+.modalClose{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.labelInput{
+    margin-bottom: 20px;
+}
+.labelInput input{
+    border: 2px solid rgb(225, 225, 225);
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 300px;
+    outline: none;
+}
+.labelInput label{
+    width: 150px;
+}
+.btn_upload{
+   text-align: center;
+   margin-bottom: 30px;
+}
+/* ***********************************************    aside    **************************************************************/
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #b2b2b2; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+.aside_main{
+    display: flex;
+    
+}
+.asideContainer{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.asideContainer:hover{
+    background-color: #f9f5f3;
+}
+.asideContainer p{
+   margin: 5px 0px 2px 15px;
+
+}
+#trecipeTitle{
+    color: #f38e90;
+    font-size: 17px;
+}
+#trecipeDesc{
+    color: #9193b1;
+}
+aside{
+    background-color: white;
+    height: 1250px;
+    width: 30%;
+    border-radius: 0 0 0 10px;
+    position: relative;
+    padding: 20px 0 100px;
+    overflow: hidden;
+}
+aside img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.copyright{
+    position: absolute;
+    bottom: 0;
+    color: #a39fab;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 0 20px;
+}
+.btn_pagination{
+    background-color: #f9f5f3;
+    color: #f38e90;
+    border-radius: 50px;
+    width: 80px;
+    border: none;
+    height: 30px;
+}
+/* ***********************************************    main    **************************************************************/
+
+main{
+    background-color: transparent;
+    width: 70%;
+    text-align: center;
+
+}
+main p{   
+    color: #615551;
+    font-size: 20px;
+    font-weight: 600;
+    width: 40%;
+    margin: 50px auto 0;
+}
+
+main p i {
+    color: #f48982;
+    font-size: 25px;
+    margin-right: 5px;
+}
