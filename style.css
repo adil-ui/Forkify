@@ -48,12 +48,10 @@ ul{
     padding-top: 15px;
 }
 .bookmark_container{
-    width: 350px;
-    height: 150px;
-    padding: 25px 20px;
+    width: 380px;
+    height: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; 
     text-align: center;
     color: #615551;
     background-color: white;
@@ -61,13 +59,16 @@ ul{
     position: absolute;
     top: 100%;
     right: 0;
-    visibility: hidden;
+    display: none;
     transform: .5s;
     z-index: 99;
 
 }
 .bookmark:hover + .bookmark_container {
-    visibility: visible;
+    display: block;
+}
+.bookmark_container:hover {
+    display: block;
 }
 .bookmark_container i{
     color: #f48982;
@@ -75,11 +76,13 @@ ul{
     margin-right: 5px;
 
 }
-.bookmark_container p{
+.bookmark_container .bookmarkAlert{
     color: #615551;
     font-size: 18px;
     font-weight: 500;
+    padding: 30px;
 }
+
 nav li{
     list-style: none;
 }
@@ -180,7 +183,7 @@ nav button i{
    margin-bottom: 30px;
 }
 /* ***********************************************    aside_main    **************************************************************/
-.loader {
+.loader, .loaderMain {
     border: 8px solid #f3f3f3; /* Light grey */
     border-top: 8px solid #b2b2b2; /* Blue */
     border-radius: 50%;
@@ -202,6 +205,7 @@ nav button i{
 .asideContainer{
     display: flex;
     align-items: center;
+    text-align: left;
     padding: 20px;
 }
 .asideContainer:hover{
@@ -232,7 +236,7 @@ aside{
 .asideContainer{
     cursor: pointer;
 }
-aside img{
+aside img, .bookmarkImg{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -327,6 +331,7 @@ main p i {
     background: linear-gradient(to bottom right,#fbdb89,#f48982);
     transition: .3s;
     margin-top: -20px;
+    cursor: pointer;
 }
 .bookmarkIcon:hover{
     transform: scale(1.05);

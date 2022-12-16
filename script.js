@@ -3,19 +3,22 @@ let currentPage = 1;
 $("#prev").hide();
 $("#next").hide();
 
-
 const showAsideContainer = () => {
   $(".asideContainer").click((event) => {
+    $("mainAlert").css("display", "none")
     let id = event.currentTarget.id;
-    $("main").empty()
-    console.log(id);
+    $(".loaderMain").css("display", "block");
     fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`)
       .then((response) => response.json())
       .then((recipeData) => {
+      $("main").empty()
+
         console.log(recipeData)
         if($('.recipeIngredient')){
           $("aside").css("height", "auto");
         }
+        $(".loaderMain").css("display", "none");
+
         $("main").append(` <div class="recipeImg">
         <img src="${recipeData.recipe.image_url}" alt="">
         <h1><span>${recipeData.recipe.title}</span></h1>
@@ -30,7 +33,8 @@ const showAsideContainer = () => {
                 <div class="servingIco">-</div>
             </div>
             <div class="bookmarkIcon">
-                <a href=""><i class="fa-regular fa-bookmark"></i></a>
+              <div class="book_1"><i class="fa-regular fa-bookmark"></i></div>
+              <div class="book_2"><i class="fa-solid fa-bookmark"></i></i></div>             
             </div>
         </div>
         <div class="recipeIngredient">
@@ -43,11 +47,32 @@ const showAsideContainer = () => {
         <div class="webSite">
               <h4>HOW TO COOK IT</h4>
               <p>This recipe was carefully designed and tested by <span>101 Cookbooks</span>. Please check out directions at their website.</p>
-              <a href=${recipeData.recipe.publisher_url}/${recipeData.recipe.title} target="_blank"><button>DIRECTION <i class="fa-solid fa-arrow-right"></i></button></a>
+              <a href="${recipeData.recipe.source_url}" target="_blank"><button>DIRECTION <i class="fa-solid fa-arrow-right"></i></button></a>
           </div>`);
+          $('.book_2').css('display', 'none')
+
+          $('.bookmarkIcon').click((ev) =>{  
+            $('.book_1').css('display', 'none')
+            $('.book_2').css('display', 'block')
+
+            console.log(recipeData)
+            ev.preventDefault()         
+            $('.bookmarkAlert').css('display', 'none')
+            $(".bookmark_container")
+            .append(`<div class="asideContainer">
+              <img src="${recipeData.recipe.image_url}" class="bookmarkImg" />
+              <div>
+                <p id="trecipeTitle">${recipeData.recipe.title}</p>
+                <p id="trecipeDesc">${recipeData.recipe.publisher}</p>
+              </div>
+          </div>`);
+          })
       });
+     
   });
+ 
 }
+
 $("#FormSearch").submit((event) => {
     event.preventDefault();
     $(".results").empty();
@@ -127,3 +152,4 @@ $("#FormSearch").submit((event) => {
         });
         showAsideContainer();
 })});
+
