@@ -4,6 +4,50 @@ $("#prev").hide();
 $("#next").hide();
 
 
+const showAsideContainer = () => {
+  $(".asideContainer").click((event) => {
+    let id = event.currentTarget.id;
+    $("main").empty()
+    console.log(id);
+    fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`)
+      .then((response) => response.json())
+      .then((recipeData) => {
+        console.log(recipeData)
+        if($('.recipeIngredient')){
+          $("aside").css("height", "auto");
+        }
+        $("main").append(` <div class="recipeImg">
+        <img src="${recipeData.recipe.image_url}" alt="">
+        <h1><span>${recipeData.recipe.title}</span></h1>
+        </div>
+        <div class="recipeDetails">
+            <div class="recipeInfo">
+                <h6><i class="fa-regular fa-clock"></i> <span>UNKOWN</span> MINUTES</h6>
+            </div>
+            <div class="recipeInfo">
+                <h6><i class="fa-regular fa-user"></i>SERVINGS</h6>
+                <div class="servingIco">+</div>
+                <div class="servingIco">-</div>
+            </div>
+            <div class="bookmarkIcon">
+                <a href=""><i class="fa-regular fa-bookmark"></i></a>
+            </div>
+        </div>
+        <div class="recipeIngredient">
+            <h4>RECIPE INGREDIENTS</h4>
+            <div class="recipetDetails">
+                ${recipeData.recipe.ingredients.map(ingredient => `<div class="ingredientDetail"><i class="fa-solid fa-check"></i><p>${ingredient}</p></div>`).join('')}  
+                
+            </div>                  
+        </div>
+        <div class="webSite">
+              <h4>HOW TO COOK IT</h4>
+              <p>This recipe was carefully designed and tested by <span>101 Cookbooks</span>. Please check out directions at their website.</p>
+              <a href=${recipeData.recipe.publisher_url}/${recipeData.recipe.title} target="_blank"><button>DIRECTION <i class="fa-solid fa-arrow-right"></i></button></a>
+          </div>`);
+      });
+  });
+}
 $("#FormSearch").submit((event) => {
     event.preventDefault();
     $(".results").empty();
@@ -13,9 +57,12 @@ $("#FormSearch").submit((event) => {
       .then((response) => {
         if (response.ok) {
           return response.json();
+
         } else {
+          $("#prev").hide();
+          $("#next").hide();
           $(".loader").css("display", "none");
-          $("aside").append("<div class='notFound'><i class='fa-solid fa-triangle-exclamation'></i>No recipes found for your query! Please try again ;)</div>");
+          $("aside").append("<div class='notFound'><i class='fa-solid fa-triangle-exclamation'></i> No recipes found for your query! Please try again ;)</div>");
           return;
         }
       })
@@ -55,6 +102,7 @@ $("#FormSearch").submit((event) => {
             if (currentPage === numberPages) {
                 $("#next").hide();
             }
+            showAsideContainer();
         })
         $("#prev").click(() => {
             currentPage--
@@ -75,5 +123,7 @@ $("#FormSearch").submit((event) => {
             if (currentPage === 1) {
                 $("#prev").hide();
             }
+            showAsideContainer();
         });
+        showAsideContainer();
 })});

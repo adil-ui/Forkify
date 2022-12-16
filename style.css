@@ -63,6 +63,7 @@ ul{
     right: 0;
     visibility: hidden;
     transform: .5s;
+    z-index: 99;
 
 }
 .bookmark:hover + .bookmark_container {
@@ -107,7 +108,7 @@ nav form{
     padding: 0 20px;
     height: 55px;
     border-radius: 50px;
-    width: 350px;
+    width: 400px;
     font-size: 17px;
     outline: none;
     transition: all .3s;
@@ -123,7 +124,7 @@ nav input:focus +button{
 }
 #FormSearch button{
     position: absolute;
-    right: -130px;
+    right: -100px;
     top: 0;
     bottom: 0;
 }
@@ -178,7 +179,7 @@ nav button i{
    text-align: center;
    margin-bottom: 30px;
 }
-/* ***********************************************    aside    **************************************************************/
+/* ***********************************************    aside_main    **************************************************************/
 .loader {
     border: 8px solid #f3f3f3; /* Light grey */
     border-top: 8px solid #b2b2b2; /* Blue */
@@ -217,14 +218,19 @@ nav button i{
 #trecipeDesc{
     color: #9193b1;
 }
+/* ***********************************************    aside    **************************************************************/
+
 aside{
     background-color: white;
     height: 1250px;
-    width: 30%;
+    width: 35%;
     border-radius: 0 0 0 10px;
     position: relative;
     padding: 20px 0 100px;
     overflow: hidden;
+}
+.asideContainer{
+    cursor: pointer;
 }
 aside img{
     width: 60px;
@@ -251,11 +257,12 @@ aside img{
 
 main{
     background-color: transparent;
-    width: 70%;
+    width: 65%;
     text-align: center;
-
+    border-radius: 0 0 10px 0;
+    position: relative;
 }
-main p{   
+.mainAlert{   
     color: #615551;
     font-size: 20px;
     font-weight: 600;
@@ -267,4 +274,143 @@ main p i {
     color: #f48982;
     font-size: 25px;
     margin-right: 5px;
+}
+.recipeImg{
+    height: 350px;
+    position: relative;
+}
+.recipeImg:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    opacity: .5;
+    background: linear-gradient(to bottom right,#fbdb89,#f48982);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.recipeImg img{
+    width: 100%;
+    height: 100%;
+    
+}
+.recipeImg h1{
+    background: linear-gradient(to bottom right,#fbdb89,#f48982);
+    width: 45%;
+    text-align: center;
+    padding: 5px;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1.5;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,10%)rotate(-10deg);
+}
+.recipeImg h1 span{
+    color: white; 
+}
+.recipeDetails{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 0 30px;
+}
+.bookmarkIcon {
+    border-radius: 50% !important;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right,#fbdb89,#f48982);
+    transition: .3s;
+    margin-top: -20px;
+}
+.bookmarkIcon:hover{
+    transform: scale(1.05);
+}
+.bookmarkIcon i{
+    font-size: 22px;
+    color: white;
+}
+.recipeInfo h6{
+    font-size: 18px;
+    margin-right: 15px;
+}
+.recipeInfo h6 span{
+   font-family: 'NunitoBold';
+}
+.recipeInfo i{
+    color: #f38e90;
+    margin-right: 5px;
+    font-size: 22px;
+}
+.recipeInfo{
+    display: flex;
+    justify-content: center;
+}
+.servingIco{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f38e90;
+    border-radius: 50%;
+    color: #f38e90;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.recipeIngredient{
+    background-color: #f2efee;
+    padding: 50px 30px;
+    overflow: hidden;
+}
+.recipetDetails{ 
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+main h4{
+    color: #f48982;
+   font-family: 'NunitoBold';
+   margin-bottom: 30px;
+}
+.ingredientDetail{
+    width: 42%;
+    text-align: left;
+    margin-bottom: 20px;
+    display: flex;
+}
+.recipeIngredient i{
+    color: #f38e90;
+    font-size: 22px;
+    margin-right: 10px;
+}
+.webSite{
+    padding: 50px 30px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+.webSite p{
+    width: 80%;
+    margin: 0 auto 30px;
+    color: #615551;
+    font-size: 17px;
+}
+.webSite p span{
+    font-family: 'NunitoBold';
+}
+.webSite button{
+    width: 200px;
+    margin: auto;
+}
+.webSite button i{
+    color: white;
+    margin-left: 10px;
 }
