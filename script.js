@@ -49,13 +49,11 @@ const showAsideContainer = () => {
               <p>This recipe was carefully designed and tested by <span>101 Cookbooks</span>. Please check out directions at their website.</p>
               <a href="${recipeData.recipe.source_url}" target="_blank"><button>DIRECTION <i class="fa-solid fa-arrow-right"></i></button></a>
           </div>`);
+/**********************************************     bookmark      **************************************************************/
           $('.book_2').css('display', 'none')
-
           $('.bookmarkIcon').click((ev) =>{  
             $('.book_1').css('display', 'none')
             $('.book_2').css('display', 'block')
-
-            console.log(recipeData)
             ev.preventDefault()         
             $('.bookmarkAlert').css('display', 'none')
             $(".bookmark_container")
